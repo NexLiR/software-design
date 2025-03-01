@@ -1,10 +1,10 @@
 ## 1. DRY (Don't Repeat Yourself)
 
 The Base Classes [AnimalBase](./Zoo/ZooLib/Animals/AnimalBase.cs) and [EmployeeBase](./Zoo/ZooLib/Employees/EmployeeBase.cs) encapsulate common behavior and properties that would otherwise be duplicated across multiple classes.
-There are also Interface Abstractions, such as [IAnimal](./Zoo/ZooLib/Animals/IAnimal.cs), [IEmployee](./Zoo/ZooLib/Employees/IEmployee.cs), and [IEnclosure](./Zoo/ZooLib/Employees/IEclosure.cs) which define shared contracts that eliminate the need for duplicating method signatures. 
-We have a lot of Helper Methods that consolidate repeated logic. For example, the [CanHostAnimal](./Zoo/ZooLib/Employees/Eclosure.cs#L27-L30) method in the [Enclosure](./Zoo/ZooLib/Employees/Eclosure.cs) class centralizes the logic for checking if an animal can be added. 
+There are also Interface Abstractions, such as [IAnimal](./Zoo/ZooLib/Animals/IAnimal.cs), [IEmployee](./Zoo/ZooLib/Employees/IEmployee.cs), and [IEnclosure](./Zoo/ZooLib/Enclosures/IEnclosure.cs) which define shared contracts that eliminate the need for duplicating method signatures. 
+We have a lot of Helper Methods that consolidate repeated logic. For example, the [CanHostAnimal](./Zoo/ZooLib/Enclosures/Enclosure.cs#L27-L30) method in the [Enclosure](./Zoo/ZooLib/Enclosures/Enclosure.cs) class centralizes the logic for checking if an animal can be added. 
 The [CanHandleAnimal](./Zoo/ZooLib/Employees/EmployeeBase.cs#L43-L46) method in [EmployeeBase](./Zoo/ZooLib/Employees/EmployeeBase.cs) provides a consistent way to check role-based permissions. 
-Also exists Shared Validation Logic which appears in the [IFoodRequirement](./Zoo/ZooLib/Food/IFoodRequirements.cs) implementations where the [CanEat](./Zoo/ZooLib/Food/FoodRequirements.cs#L13) method follows a similar pattern across different animal types.
+Also exists Shared Validation Logic which appears in the [IFoodRequirement](./Zoo/ZooLib/Food/FoodRequirements/IFoodRequirement.cs) implementations where the [CanEat](./Zoo/ZooLib/Food/FoodRequirements/IFoodRequirement.cs#L13) method follows a similar pattern across different animal types.
 
 ## 2. KISS (Keep It Simple, Stupid)
 
@@ -27,30 +27,30 @@ Health-related Classes like [HealthRecord](./Zoo/ZooLib/HealthInfo/HealthRecord.
 
 The codebase is designed to be extended without modifying existing code.
 
-Interface-based Design allows for new implementations of [IAnimal](./Zoo/ZooLib/Animals/IAnimal.cs), [IEmployee](./Zoo/ZooLib/Employees/IEmployee.cs), [IEnclosure](./Zoo/ZooLib/Employees/IEclosure.cs), etc., without changing existing code. 
+Interface-based Design allows for new implementations of [IAnimal](./Zoo/ZooLib/Animals/IAnimal.cs), [IEmployee](./Zoo/ZooLib/Employees/IEmployee.cs), [IEnclosure](./Zoo/ZooLib/Enclosures/IEnclosure.cs), etc., without changing existing code. 
 Inheritance Hierarchies like [AnimalBase](./Zoo/ZooLib/Animals/AnimalBase.cs) with derived [Bird](./Zoo/ZooLib/Animals/Bird.cs) and [Mammal](./Zoo/ZooLib/Animals/Mammal.cs) classes enable extension through new animal types. 
-Enclosure Specialization through classes like [AviaryEnclosure](./Zoo/ZooLib/Enclosures/AviaryEnclosure.cs) and [TerrestrialEnclosure](./Zoo/ZooLib/Enclosures/TerrestrialEnclosure.cs) that extend the base [Enclosure](./Zoo/ZooLib/Employees/Eclosure.cs) class. 
+Enclosure Specialization through classes like [AviaryEnclosure](./Zoo/ZooLib/Enclosures/AviaryEnclosure.cs) and [TerrestrialEnclosure](./Zoo/ZooLib/Enclosures/TerrestrialEnclosure.cs) that extend the base [Enclosure](./Zoo/ZooLib/Enclosures/Enclosure.cs) class. 
 Role-based System allows new employee roles to be added by implementing the [IEmployeeRole](./Zoo/ZooLib/Employees/IEmployeeRole.cs) interface.
 
 ### Liskov Substitution Principle (LSP)
 
 Animal Hierarchy ensures that derived classes like [Bird](./Zoo/ZooLib/Animals/Bird.cs) and [Mammal](./Zoo/ZooLib/Animals/Mammal.cs) can be used wherever [IAnimal](./Zoo/ZooLib/Animals/IAnimal.cs) is expected. 
 Employee System allows any [IEmployee](./Zoo/ZooLib/Employees/IEmployee.cs) implementation to be used interchangeably. 
-Enclosure Types ([AviaryEnclosure](./Zoo/ZooLib/Enclosures/AviaryEnclosure.cs), [TerrestrialEnclosure](./Zoo/ZooLib/Enclosures/TerrestrialEnclosure.cs)) maintain the contract of the [IEnclosure](./Zoo/ZooLib/Employees/IEclosure.cs) interface. 
-Food Requirements for different animal types correctly implement the [IFoodRequirement](./Zoo/ZooLib/Food/IFoodRequirements.cs) interface.
+Enclosure Types ([AviaryEnclosure](./Zoo/ZooLib/Enclosures/AviaryEnclosure.cs), [TerrestrialEnclosure](./Zoo/ZooLib/Enclosures/TerrestrialEnclosure.cs)) maintain the contract of the [IEnclosure](./Zoo/ZooLib/Enclosures/IEnclosure.cs) interface. 
+Food Requirements for different animal types correctly implement the [IFoodRequirement](./Zoo/ZooLib/Food/FoodRequirements/IFoodRequirement.cs) interface.
 
 ### Interface Segregation Principle (ISP)
 
 Animal Interfaces are minimal, with specific animal types implementing only relevant behaviors. Employee Interfaces define only essential methods, with role-specific behaviors handled through composition with [IEmployeeRole](./Zoo/ZooLib/Employees/IEmployeeRole.cs). 
-Food-related Interfaces like [IFood](./Zoo/ZooLib/Food/IFood.cs) and [IFoodRequirement](./Zoo/ZooLib/Food/IFoodRequirements.cs) contain only methods relevant to their purpose.
+Food-related Interfaces like [IFood](./Zoo/ZooLib/Food/IFood.cs) and [IFoodRequirement](./Zoo/ZooLib/Food/FoodRequirements/IFoodRequirement.cs) contain only methods relevant to their purpose.
 
 ### Dependency Inversion Principle (DIP)
 
 The code consistently depends on abstractions rather than concrete implementations.
 
-Manager Classes work with interface types ([IAnimal](./Zoo/ZooLib/Animals/IAnimal.cs), [IEmployee](./Zoo/ZooLib/Employees/IEmployee.cs), [IEnclosure](./Zoo/ZooLib/Employees/IEclosure.cs)) rather than concrete classes. 
+Manager Classes work with interface types ([IAnimal](./Zoo/ZooLib/Animals/IAnimal.cs), [IEmployee](./Zoo/ZooLib/Employees/IEmployee.cs), [IEnclosure](./Zoo/ZooLib/Enclosures/IEnclosure.cs)) rather than concrete classes. 
 Employee Classes depend on the [IEmployeeRole](./Zoo/ZooLib/Employees/IEmployeeRole.cs) abstraction rather than specific role implementations. Animal Handling Logic in [Zookeeper](./Zoo/ZooLib/Employees/Roles/Zookeeper.cs) and [Veterinarian](./Zoo/ZooLib/Employees/Roles/Veterinarian.cs) classes operates on the [IAnimal](./Zoo/ZooLib/Animals/IAnimal.cs) interface. 
-Food System works with [IFood](./Zoo/ZooLib/Food/IFood.cs) and [IFoodRequirement](./Zoo/ZooLib/Food/IFoodRequirements.cs) abstractions.
+Food System works with [IFood](./Zoo/ZooLib/Food/IFood.cs) and [IFoodRequirement](./Zoo/ZooLib/Food/FoodRequirements/IFoodRequirement.cs) abstractions.
 
 ## 4. YAGNI (You Aren't Gonna Need It)
 
@@ -67,7 +67,7 @@ Health Record System composes with both animals and employees rather than being 
 
 ## 6. Program to Interfaces, not Implementations
 
-All manager classes operate on interface types ([IAnimal](./Zoo/ZooLib/Animals/IAnimal.cs), [IEmployee](./Zoo/ZooLib/Employees/IEmployee.cs), [IEnclosure](./Zoo/ZooLib/Employees/IEclosure.cs), [IFood](./Zoo/ZooLib/Food/IFood.cs)). 
+All manager classes operate on interface types ([IAnimal](./Zoo/ZooLib/Animals/IAnimal.cs), [IEmployee](./Zoo/ZooLib/Employees/IEmployee.cs), [IEnclosure](./Zoo/ZooLib/Enclosures/IEnclosure.cs), [IFood](./Zoo/ZooLib/Food/IFood.cs)). 
 Enclosure management uses [IAnimal](./Zoo/ZooLib/Animals/IAnimal.cs) interface for all animal-related operations. Employee operations depend on the [IEmployeeRole](./Zoo/ZooLib/Employees/IEmployeeRole.cs) interface. [Zoo](./Zoo/ZooLib/ZooManagement/Zoo.cs) class orchestrates interactions between systems through their interfaces.
 
 ## 7. Fail Fast
