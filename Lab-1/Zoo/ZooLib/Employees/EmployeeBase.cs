@@ -28,18 +28,6 @@ namespace ZooLib.Employees
             HealthRecord = new HealthRecord(id, "Employee");
         }
 
-        public void CheckHealth()
-        {
-            HealthRecord.Checkup(DateTime.Now);
-            Console.WriteLine($"Health check completed for {Name}. Status: {(IsHealthy ? "Healthy" : "Requires attention")}");
-        }
-
-        public void AssignTask(string task)
-        {
-            _assignedTasks.Add(task);
-            Console.WriteLine($"{Name} assigned task: {task}");
-        }
-
         public bool CanHandleAnimal(IAnimal animal)
         {
             return Role.CanHandleAnimalType(animal.Species);

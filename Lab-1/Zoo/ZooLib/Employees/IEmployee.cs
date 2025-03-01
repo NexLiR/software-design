@@ -13,8 +13,6 @@ namespace ZooLib.Employees
         string Id { get; }
         IEmployeeRole Role { get; }
         bool IsHealthy { get; }
-        void CheckHealth();
-        void AssignTask(string task);
         bool CanHandleAnimal(IAnimal animal);
     }
 }
