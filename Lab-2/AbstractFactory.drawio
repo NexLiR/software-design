@@ -1,0 +1,304 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36" version="26.0.16">
+  <diagram name="Page-1" id="Qs8pfFPpCerDKXt57efB">
+    <mxGraphModel dx="2477" dy="3797" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-1" value="&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;div&gt;ITechFactory&lt;/div&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="370" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-2" value="." style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-1">
+          <mxGeometry y="30" width="220" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-5" value="" style="swimlane;startSize=0;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-1">
+          <mxGeometry y="40" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-6" value="+&amp;nbsp;CreateLaptop() : ILaptop" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-5">
+          <mxGeometry width="220" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-7" value="+ CreateSmartphone() : ISmartphone" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-5">
+          <mxGeometry y="20" width="220" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-8" value="." style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="560" width="220" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=block;endFill=0;" edge="1" parent="1" source="cxuHDFK6pZK8DwNZ5O6L-9" target="cxuHDFK6pZK8DwNZ5O6L-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-9" value="&lt;div&gt;XiaomiFactory&lt;/div&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="470" y="500" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-10" value="." style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-9">
+          <mxGeometry y="30" width="220" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-11" value="" style="swimlane;startSize=0;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-9">
+          <mxGeometry y="40" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-12" value="+&amp;nbsp;CreateLaptop() : ILaptop" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-11">
+          <mxGeometry width="220" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-13" value="+ CreateSmartphone() : ISmartphone" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-11">
+          <mxGeometry y="20" width="220" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=block;endFill=0;" edge="1" parent="1" source="cxuHDFK6pZK8DwNZ5O6L-14" target="cxuHDFK6pZK8DwNZ5O6L-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-14" value="&lt;div&gt;SamsungFactory&lt;/div&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="180" y="500" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-15" value="." style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-14">
+          <mxGeometry y="30" width="220" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-16" value="" style="swimlane;startSize=0;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-14">
+          <mxGeometry y="40" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-17" value="+&amp;nbsp;CreateLaptop() : ILaptop" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-16">
+          <mxGeometry width="220" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-18" value="+ CreateSmartphone() : ISmartphone" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-16">
+          <mxGeometry y="20" width="220" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-19" value="&lt;font&gt;IS - A&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=30;" vertex="1" parent="1">
+          <mxGeometry x="180" y="310" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-22" value="&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;div&gt;ILaptop&lt;/div&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="890" y="355" width="270" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-23" value="+ ModelName : string&amp;nbsp;{ get; protected set; }" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-22">
+          <mxGeometry y="30" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-24" value="+ YearOfManufacture : int&amp;nbsp;{ get; protected set; }" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-22">
+          <mxGeometry y="50" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-25" value="+ CPUBrand : string&amp;nbsp;{ get; protected set; }" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-22">
+          <mxGeometry y="70" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-26" value="" style="swimlane;startSize=0;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-22">
+          <mxGeometry y="90" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-27" value="+ Display() : void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-26">
+          <mxGeometry width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-28" value="&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;div&gt;ISmartphone&lt;/div&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1500" y="355" width="270" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-29" value="+ ModelName : string&amp;nbsp;{ get; protected set; }" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-28">
+          <mxGeometry y="30" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-30" value="+ YearOfManufacture : int&amp;nbsp;{ get; protected set; }" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-28">
+          <mxGeometry y="50" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-31" value="+ StorageSize : string&amp;nbsp;{ get; protected set; }" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-28">
+          <mxGeometry y="70" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-32" value="" style="swimlane;startSize=0;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-28">
+          <mxGeometry y="90" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-33" value="+ Display() : void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-32">
+          <mxGeometry width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-47" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=block;endFill=0;" edge="1" parent="1" source="cxuHDFK6pZK8DwNZ5O6L-34" target="cxuHDFK6pZK8DwNZ5O6L-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-34" value="&lt;div&gt;XiaomiLaptop&lt;/div&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1050" y="510" width="270" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-35" value="+ ModelName : string&amp;nbsp;{ get; protected set; }" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-34">
+          <mxGeometry y="30" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-36" value="+ YearOfManufacture : int&amp;nbsp;{ get; protected set; }" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-34">
+          <mxGeometry y="50" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-37" value="+ CPUBrand : string&amp;nbsp;{ get; protected set; }" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-34">
+          <mxGeometry y="70" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-38" value="" style="swimlane;startSize=0;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-34">
+          <mxGeometry y="90" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-39" value="+ Display() : void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-38">
+          <mxGeometry width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=block;endFill=0;" edge="1" parent="1" source="cxuHDFK6pZK8DwNZ5O6L-40" target="cxuHDFK6pZK8DwNZ5O6L-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-40" value="&lt;div&gt;SamsungLaptop&lt;/div&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="740" y="510" width="270" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-41" value="+ ModelName : string&amp;nbsp;{ get; protected set; }" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-40">
+          <mxGeometry y="30" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-42" value="+ YearOfManufacture : int&amp;nbsp;{ get; protected set; }" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-40">
+          <mxGeometry y="50" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-43" value="+ CPUBrand : string&amp;nbsp;{ get; protected set; }" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-40">
+          <mxGeometry y="70" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-44" value="" style="swimlane;startSize=0;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-40">
+          <mxGeometry y="90" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-45" value="+ Display() : void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-44">
+          <mxGeometry width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-60" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=block;endFill=0;" edge="1" parent="1" source="cxuHDFK6pZK8DwNZ5O6L-48" target="cxuHDFK6pZK8DwNZ5O6L-28">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-48" value="&lt;div&gt;SamsungSmartphone&lt;/div&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1370" y="510" width="270" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-49" value="+ ModelName : string&amp;nbsp;{ get; protected set; }" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-48">
+          <mxGeometry y="30" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-50" value="+ YearOfManufacture : int&amp;nbsp;{ get; protected set; }" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-48">
+          <mxGeometry y="50" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-51" value="+ StorageSize : string&amp;nbsp;{ get; protected set; }" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-48">
+          <mxGeometry y="70" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-52" value="" style="swimlane;startSize=0;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-48">
+          <mxGeometry y="90" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-53" value="+ Display() : void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-52">
+          <mxGeometry width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-61" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=block;endFill=0;" edge="1" parent="1" source="cxuHDFK6pZK8DwNZ5O6L-54" target="cxuHDFK6pZK8DwNZ5O6L-28">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-54" value="&lt;div&gt;XiaomiSmartphone&lt;/div&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1670" y="510" width="270" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-55" value="+ ModelName : string&amp;nbsp;{ get; protected set; }" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-54">
+          <mxGeometry y="30" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-56" value="+ YearOfManufacture : int&amp;nbsp;{ get; protected set; }" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-54">
+          <mxGeometry y="50" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-57" value="+ StorageSize : string&amp;nbsp;{ get; protected set; }" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-54">
+          <mxGeometry y="70" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-58" value="" style="swimlane;startSize=0;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-54">
+          <mxGeometry y="90" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-59" value="+ Display() : void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-58">
+          <mxGeometry width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-62" value="&lt;font&gt;HAS - A&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=30;" vertex="1" parent="1">
+          <mxGeometry x="200" y="660" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-98" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=open;endFill=0;" edge="1" parent="1" source="cxuHDFK6pZK8DwNZ5O6L-63" target="cxuHDFK6pZK8DwNZ5O6L-85">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-99" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;" edge="1" parent="1" source="cxuHDFK6pZK8DwNZ5O6L-63" target="cxuHDFK6pZK8DwNZ5O6L-91">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-63" value="&lt;div&gt;SamsungFactory&lt;/div&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="290" y="750" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-64" value="." style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-63">
+          <mxGeometry y="30" width="220" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-65" value="" style="swimlane;startSize=0;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-63">
+          <mxGeometry y="40" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-66" value="+&amp;nbsp;CreateLaptop() : ILaptop" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-65">
+          <mxGeometry width="220" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-67" value="+ CreateSmartphone() : ISmartphone" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-65">
+          <mxGeometry y="20" width="220" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-100" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=open;endFill=0;" edge="1" parent="1" source="cxuHDFK6pZK8DwNZ5O6L-68" target="cxuHDFK6pZK8DwNZ5O6L-73">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-101" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=open;endFill=0;" edge="1" parent="1" source="cxuHDFK6pZK8DwNZ5O6L-68" target="cxuHDFK6pZK8DwNZ5O6L-79">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-68" value="&lt;div&gt;XiaomiFactory&lt;/div&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1070" y="750" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-69" value="." style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-68">
+          <mxGeometry y="30" width="220" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-70" value="" style="swimlane;startSize=0;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-68">
+          <mxGeometry y="40" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-71" value="+&amp;nbsp;CreateLaptop() : ILaptop" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-70">
+          <mxGeometry width="220" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-72" value="+ CreateSmartphone() : ISmartphone" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-70">
+          <mxGeometry y="20" width="220" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-73" value="&lt;div&gt;XiaomiLaptop&lt;/div&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="880" y="870" width="270" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-74" value="+ ModelName : string&amp;nbsp;{ get; protected set; }" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-73">
+          <mxGeometry y="30" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-75" value="+ YearOfManufacture : int&amp;nbsp;{ get; protected set; }" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-73">
+          <mxGeometry y="50" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-76" value="+ CPUBrand : string&amp;nbsp;{ get; protected set; }" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-73">
+          <mxGeometry y="70" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-77" value="" style="swimlane;startSize=0;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-73">
+          <mxGeometry y="90" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-78" value="+ Display() : void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-77">
+          <mxGeometry width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-79" value="&lt;div&gt;XiaomiSmartphone&lt;/div&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1220" y="870" width="270" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-80" value="+ ModelName : string&amp;nbsp;{ get; protected set; }" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-79">
+          <mxGeometry y="30" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-81" value="+ YearOfManufacture : int&amp;nbsp;{ get; protected set; }" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-79">
+          <mxGeometry y="50" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-82" value="+ StorageSize : string&amp;nbsp;{ get; protected set; }" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-79">
+          <mxGeometry y="70" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-83" value="" style="swimlane;startSize=0;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-79">
+          <mxGeometry y="90" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-84" value="+ Display() : void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-83">
+          <mxGeometry width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-85" value="&lt;div&gt;SamsungLaptop&lt;/div&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="140" y="870" width="270" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-86" value="+ ModelName : string&amp;nbsp;{ get; protected set; }" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-85">
+          <mxGeometry y="30" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-87" value="+ YearOfManufacture : int&amp;nbsp;{ get; protected set; }" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-85">
+          <mxGeometry y="50" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-88" value="+ CPUBrand : string&amp;nbsp;{ get; protected set; }" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-85">
+          <mxGeometry y="70" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-89" value="" style="swimlane;startSize=0;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-85">
+          <mxGeometry y="90" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-90" value="+ Display() : void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-89">
+          <mxGeometry width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-91" value="&lt;div&gt;SamsungSmartphone&lt;/div&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="450" y="870" width="270" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-92" value="+ ModelName : string&amp;nbsp;{ get; protected set; }" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-91">
+          <mxGeometry y="30" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-93" value="+ YearOfManufacture : int&amp;nbsp;{ get; protected set; }" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-91">
+          <mxGeometry y="50" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-94" value="+ StorageSize : string&amp;nbsp;{ get; protected set; }" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-91">
+          <mxGeometry y="70" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-95" value="" style="swimlane;startSize=0;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-91">
+          <mxGeometry y="90" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cxuHDFK6pZK8DwNZ5O6L-96" value="+ Display() : void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="cxuHDFK6pZK8DwNZ5O6L-95">
+          <mxGeometry width="270" height="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
