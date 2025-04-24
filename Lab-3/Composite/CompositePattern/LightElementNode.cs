@@ -81,6 +81,14 @@ namespace Composite.CompositePattern
                 return sb.ToString();
             }
         }
+        public bool HasCssClasses()
+        {
+            return _cssClasses.Count > 0;
+        }
+        public string GetCssClassesString()
+        {
+            return string.Join(" ", _cssClasses);
+        }
         public void PrintStructure(int level = 0)
         {
             string indent = new string(' ', level * 2);
