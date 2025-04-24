@@ -17,4 +17,8 @@ namespace Composite
         SelfClosing,
         WithClosingTag
     }
+    public enum EventType
+    {
+        Click
+    }
 }
