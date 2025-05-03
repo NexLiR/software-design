@@ -9,10 +9,17 @@
 
   <ItemGroup>
     <None Remove="book.txt" />
+    <None Remove="images\oleksiy.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="book.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="images\oleksiy.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
