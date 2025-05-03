@@ -1,31 +1,30 @@
 ﻿using Composite.CompositePattern;
 using Composite;
 using Composite.CompositePattern.Template;
+using Composite.CompositePattern.Iterator;
 
 class Program
 {
     static void Main(string[] args)
     {
-        var table = new LightElementNodeWithHooks("table", DisplayType.Block, ClosingType.WithClosingTag);
-        table.SetAttribute("id", "employee-table");
+        var table = new LightElementNodeWithIterator("table", DisplayType.Block, ClosingType.WithClosingTag);
         table.AddCssClass("data-table");
 
-        var thead = new LightElementNodeWithHooks("thead", DisplayType.Block, ClosingType.WithClosingTag);
-        var headerRow = new LightElementNodeWithHooks("tr", DisplayType.Block, ClosingType.WithClosingTag);
+        var thead = new LightElementNodeWithIterator("thead", DisplayType.Block, ClosingType.WithClosingTag);
+        var headerRow = new LightElementNodeWithIterator("tr", DisplayType.Block, ClosingType.WithClosingTag);
 
         string[] headers = { "ID", "Name", "Position", "Salary", "Photo", "Actions" };
         foreach (var headerText in headers)
         {
-            var th = new LightElementNodeWithHooks("th", DisplayType.Block, ClosingType.WithClosingTag);
-            th.AddChild(new LightTextNodeWithHooks(headerText));
+            var th = new LightElementNodeWithIterator("th", DisplayType.Block, ClosingType.WithClosingTag);
+            th.AddChild(new LightTextNode(headerText));
             headerRow.AddChild(th);
         }
 
         thead.AddChild(headerRow);
         table.AddChild(thead);
 
-        var tbody = new LightElementNodeWithHooks("tbody", DisplayType.Block, ClosingType.WithClosingTag);
-        tbody.SetAttribute("id", "employee-table-body");
+        var tbody = new LightElementNodeWithIterator("tbody", DisplayType.Block, ClosingType.WithClosingTag);
 
         string[][] data = new string[][]
         {
@@ -34,23 +33,22 @@ class Program
             new string[] { "3", "Oleksiy Semenchyk", "Manager", "20,000", Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "images", "oleksiy.jpg") }
         };
 
-        List<LightElementNodeWithHooks> buttons = new List<LightElementNodeWithHooks>();
+        List<LightElementNode> buttons = new List<LightElementNode>();
 
         foreach (var cellData in data)
         {
-            var tr = new LightElementNodeWithHooks("tr", DisplayType.Block, ClosingType.WithClosingTag);
+            var tr = new LightElementNodeWithIterator("tr", DisplayType.Block, ClosingType.WithClosingTag);
             tr.AddCssClass("data-row");
-            tr.SetAttribute("data-employee-id", cellData[0]);
 
             for (int i = 0; i < cellData.Length - 1; i++)
             {
-                var td = new LightElementNodeWithHooks("td", DisplayType.Block, ClosingType.WithClosingTag);
+                var td = new LightElementNodeWithIterator("td", DisplayType.Block, ClosingType.WithClosingTag);
                 td.AddCssClass("data-cell");
-                td.AddChild(new LightTextNodeWithHooks(cellData[i]));
+                td.AddChild(new LightTextNode(cellData[i]));
                 tr.AddChild(td);
             }
 
-            var photoCell = new LightElementNodeWithHooks("td", DisplayType.Block, ClosingType.WithClosingTag);
+            var photoCell = new LightElementNodeWithIterator("td", DisplayType.Block, ClosingType.WithClosingTag);
             photoCell.AddCssClass("photo-cell");
 
             string imagePath = cellData[4];
@@ -58,40 +56,18 @@ class Program
             photoCell.AddChild(imageNode);
             tr.AddChild(photoCell);
 
-            var actionsCell = new LightElementNodeWithHooks("td", DisplayType.Block, ClosingType.WithClosingTag);
+            var actionsCell = new LightElementNodeWithIterator("td", DisplayType.Block, ClosingType.WithClosingTag);
             actionsCell.AddCssClass("actions-cell");
 
-            var button = new LightElementNodeWithHooks("button", DisplayType.Inline, ClosingType.WithClosingTag);
+            var button = new LightElementNode("button", DisplayType.Inline, ClosingType.WithClosingTag);
             button.AddCssClass("view-button");
-            button.SetAttribute("data-id", cellData[0]);
-            button.AddChild(new LightTextNodeWithHooks("View Details"));
+            button.AddChild(new LightTextNode("View Details"));
 
             button.AddEventListener(EventType.Click, (sender, e) => {
-                var targetButton = (LightElementNodeWithHooks)sender;
+                var targetButton = (LightElementNode)sender;
                 var parentRow = tr;
 
-                string employeeName = "Unknown";
-                int cellIndex = 0;
-                foreach (var child in parentRow._children)
-                {
-                    if (child is LightElementNodeWithHooks cellNode && cellNode.TagName == "td")
-                    {
-                        cellIndex++;
-                        if (cellIndex == 2)
-                        {
-                            foreach (var cellChild in cellNode._children)
-                            {
-                                if (cellChild is LightTextNodeWithHooks textNode)
-                                {
-                                    employeeName = textNode.Text;
-                                    break;
-                                }
-                            }
-                            break;
-                        }
-                    }
-                }
-
+                string employeeName = cellData[1];
                 Console.WriteLine($"\n[NAVIGATION EVENT] Redirecting to details page for: {employeeName}");
                 Console.WriteLine($"Full info about {employeeName}");
             });
@@ -114,6 +90,83 @@ class Program
         for (int i = 0; i < buttons.Count; i++)
         {
             buttons[i].TriggerEvent(EventType.Click);
+        }
+
+        Console.WriteLine("\nIterating through the table structure with depth iterator:");
+        var depthIterator = table.CreateDepthFirstIterator();
+        int depthCount = 0;
+
+        while (depthIterator.HasNext())
+        {
+            var node = depthIterator.Next();
+            depthCount++;
+
+            if (node is LightElementNode elementNode)
+            {
+                string classes = elementNode.HasCssClasses() ? elementNode.GetCssClassesString() : "no-class";
+                Console.WriteLine($"{depthCount}. Element: <{elementNode.TagName}> (Classes: {classes})");
+            }
+            else if (node is LightTextNode textNode)
+            {
+                string text = textNode.Text.Length > 30 ? textNode.Text.Substring(0, 27) + "..." : textNode.Text;
+                Console.WriteLine($"{depthCount}. Text: \"{text}\"");
+            }
+            else if (node is LightImageNode imageNode)
+            {
+                Console.WriteLine($"{depthCount}. Image: {imageNode.AltText}");
+            }
+        }
+
+        Console.WriteLine("\nIterating through the table structure with breadth iterator:");
+        var breadthIterator = table.CreateBreadthFirstIterator();
+        int breadthCount = 0;
+
+        while (breadthIterator.HasNext())
+        {
+            var node = breadthIterator.Next();
+            breadthCount++;
+
+            if (node is LightElementNode elementNode)
+            {
+                string classes = elementNode.HasCssClasses() ? elementNode.GetCssClassesString() : "no-class";
+                Console.WriteLine($"{breadthCount}. Element: <{elementNode.TagName}> (Classes: {classes})");
+            }
+            else if (node is LightTextNode textNode)
+            {
+                string text = textNode.Text.Length > 30 ? textNode.Text.Substring(0, 27) + "..." : textNode.Text;
+                Console.WriteLine($"{breadthCount}. Text: \"{text}\"");
+            }
+            else if (node is LightImageNode imageNode)
+            {
+                Console.WriteLine($"{breadthCount}. Image: {imageNode.AltText}");
+            }
+        }
+
+
+        Console.WriteLine("\nSearch using iterator");
+        int buttonCount = 0;
+        depthIterator.Reset();
+        
+        while (depthIterator.HasNext())
+        {
+            var node = depthIterator.Next();
+            
+            if (node is LightElementNode elementNode && elementNode.TagName == "button")
+            {
+                buttonCount++;
+                string buttonText = "Unknown";
+                
+                foreach (var child in elementNode._children)
+                {
+                    if (child is LightTextNode textNode)
+                    {
+                        buttonText = textNode.Text;
+                        break;
+                    }
+                }
+                
+                Console.WriteLine($"Button {buttonCount}: {buttonText}");
+            }
         }
     }
 }
