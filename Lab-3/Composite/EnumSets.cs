@@ -11,7 +11,6 @@ namespace Composite
         Block,
         Inline
     }
-
     public enum ClosingType
     {
         SelfClosing,
