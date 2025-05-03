@@ -17,12 +17,12 @@ namespace Memento.TextEditorApp
             _snapshotTime = DateTime.Now;
         }
 
-        public TextDocument GetState()
+        internal TextDocument GetState()
         {
             return _documentState.Clone();
         }
 
-        public DateTime GetSnapshotTime()
+        internal DateTime GetSnapshotTime()
         {
             return _snapshotTime;
         }

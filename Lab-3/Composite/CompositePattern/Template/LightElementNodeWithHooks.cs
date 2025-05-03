@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Composite.CompositePattern
+namespace Composite.CompositePattern.Template
 {
-    public class LightElementNode : LightNode
+    public class LightElementNodeWithHooks : LightNodeWithHooks
     {
         private string _tagName;
         private DisplayType _displayType;
@@ -14,8 +14,11 @@ namespace Composite.CompositePattern
         private List<string> _cssClasses;
         public List<LightNode> _children;
         private Dictionary<EventType, List<LightEventHandler>> _eventListeners;
+        private Dictionary<string, string> _attributes;
+        private DateTime _creationTime;
+        private bool _isRendered = false;
 
-        public LightElementNode(string tagName, DisplayType displayType, ClosingType closingType)
+        public LightElementNodeWithHooks(string tagName, DisplayType displayType, ClosingType closingType)
         {
             _tagName = tagName;
             _displayType = displayType;
@@ -23,16 +26,25 @@ namespace Composite.CompositePattern
             _cssClasses = new List<string>();
             _children = new List<LightNode>();
             _eventListeners = new Dictionary<EventType, List<LightEventHandler>>();
+            _attributes = new Dictionary<string, string>();
+            _creationTime = DateTime.Now;
+            OnCreated();
         }
 
         public string TagName => _tagName;
         public DisplayType DisplayType => _displayType;
         public ClosingType ClosingType => _closingType;
         public int ChildCount => _children.Count;
+        public DateTime CreationTime => _creationTime;
 
         public void AddChild(LightNode child)
         {
             _children.Add(child);
+
+            if (child is LightNodeWithHooks nodeWithHooks)
+            {
+                nodeWithHooks.NotifyInserted();
+            }
         }
 
         public void AddCssClass(string cssClass)
@@ -40,6 +52,7 @@ namespace Composite.CompositePattern
             if (!_cssClasses.Contains(cssClass))
             {
                 _cssClasses.Add(cssClass);
+                NotifyClassListApplied();
             }
         }
 
@@ -89,11 +102,17 @@ namespace Composite.CompositePattern
             return sb.ToString();
         }
 
-        public override string GetOuterHTML()
+        protected override string GenerateHTML()
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("<");
             sb.Append(_tagName);
+
+            foreach (var attr in _attributes)
+            {
+                sb.Append($" {attr.Key}=\"{attr.Value}\"");
+            }
+
             if (_cssClasses.Count > 0)
             {
                 sb.Append(" class=\"");
@@ -122,17 +141,22 @@ namespace Composite.CompositePattern
                 return sb.ToString();
             }
         }
-        
-        public bool HasCssClasses()
-        {
-            return _cssClasses.Count > 0;
-        }
-        
+
         public string GetCssClassesString()
         {
             return string.Join(" ", _cssClasses);
         }
-        
+
+        public void SetAttribute(string name, string value)
+        {
+            _attributes[name] = value;
+        }
+
+        public string GetAttribute(string name)
+        {
+            return _attributes.ContainsKey(name) ? _attributes[name] : null;
+        }
+
         public void PrintStructure(int level = 0)
         {
             string indent = new string(' ', level * 2);
@@ -147,7 +171,7 @@ namespace Composite.CompositePattern
 
             foreach (var child in _children)
             {
-                if (child is LightElementNode elementNode)
+                if (child is LightElementNodeWithHooks elementNode)
                 {
                     elementNode.PrintStructure(level + 1);
                 }
@@ -156,6 +180,41 @@ namespace Composite.CompositePattern
                     Console.WriteLine($"{indent}  \"{textNode.Text}\"");
                 }
             }
+        }
+        protected override void OnBeforeRender()
+        {
+            Console.WriteLine($"[Lifecycle] {_tagName} (id={GetAttribute("id") ?? "none"}) - Before render");
+        }
+
+        protected override void OnAfterRender()
+        {
+            _isRendered = true;
+            Console.WriteLine($"[Lifecycle] {_tagName} (id={GetAttribute("id") ?? "none"}) - After render");
+        }
+
+        protected override void OnCreated()
+        {
+            Console.WriteLine($"[Lifecycle] {_tagName} - Created at {_creationTime}");
+        }
+
+        protected override void OnInserted()
+        {
+            Console.WriteLine($"[Lifecycle] {_tagName} (id={GetAttribute("id") ?? "none"}) - Inserted into parent");
+        }
+
+        protected override void OnRemoved()
+        {
+            Console.WriteLine($"[Lifecycle] {_tagName} (id={GetAttribute("id") ?? "none"}) - Removed from parent");
+        }
+
+        protected override void OnClassListApplied()
+        {
+            Console.WriteLine($"[Lifecycle] {_tagName} (id={GetAttribute("id") ?? "none"}) - Class list updated: {GetCssClassesString()}");
+        }
+
+        protected override void OnStylesApplied()
+        {
+            Console.WriteLine($"[Lifecycle] {_tagName} (id={GetAttribute("id") ?? "none"}) - Styles applied");
         }
     }
 }

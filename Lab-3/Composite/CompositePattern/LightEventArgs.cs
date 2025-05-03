@@ -6,22 +6,19 @@ using System.Threading.Tasks;
 
 namespace Composite.CompositePattern
 {
+    public delegate void LightEventHandler(object sender, LightEventArgs e);
     public class LightEventArgs : EventArgs
     {
         public EventType EventType { get; private set; }
-        public LightElementNode TargetElement { get; private set; }
+        public LightNode TargetElement { get; private set; }
         public DateTime Timestamp { get; private set; }
 
-        public LightEventArgs(EventType eventType, LightElementNode targetElement)
+        public LightEventArgs(EventType eventType, LightNode targetElement)
         {
             EventType = eventType;
             TargetElement = targetElement;
             Timestamp = DateTime.Now;
         }
-
-        public override string ToString()
-        {
-            return $"Event: {EventType} on {TargetElement.TagName} at {Timestamp:HH:mm:ss.fff}";
-        }
     }
 }
+ 
