@@ -1,30 +1,31 @@
 ﻿using Composite.CompositePattern;
 using Composite;
-using Composite.CompositePattern.Template;
-using Composite.CompositePattern.Iterator;
+using Composite.CompositePattern.Visitor;
 
 class Program
 {
     static void Main(string[] args)
     {
-        var table = new LightElementNodeWithIterator("table", DisplayType.Block, ClosingType.WithClosingTag);
+        var table = new LightElementNodeVisitable("table", DisplayType.Block, ClosingType.WithClosingTag);
         table.AddCssClass("data-table");
 
-        var thead = new LightElementNodeWithIterator("thead", DisplayType.Block, ClosingType.WithClosingTag);
-        var headerRow = new LightElementNodeWithIterator("tr", DisplayType.Block, ClosingType.WithClosingTag);
+        var thead = new LightElementNodeVisitable("thead", DisplayType.Block, ClosingType.WithClosingTag);
+        var headerRow = new LightElementNodeVisitable("tr", DisplayType.Block, ClosingType.WithClosingTag);
+        headerRow.AddCssClass("header-row");
 
         string[] headers = { "ID", "Name", "Position", "Salary", "Photo", "Actions" };
         foreach (var headerText in headers)
         {
-            var th = new LightElementNodeWithIterator("th", DisplayType.Block, ClosingType.WithClosingTag);
-            th.AddChild(new LightTextNode(headerText));
+            var th = new LightElementNodeVisitable("th", DisplayType.Block, ClosingType.WithClosingTag);
+            th.AddCssClass("header-cell");
+            th.AddChild(new LightTextNodeVisitable(headerText));
             headerRow.AddChild(th);
         }
 
         thead.AddChild(headerRow);
         table.AddChild(thead);
 
-        var tbody = new LightElementNodeWithIterator("tbody", DisplayType.Block, ClosingType.WithClosingTag);
+        var tbody = new LightElementNodeVisitable("tbody", DisplayType.Block, ClosingType.WithClosingTag);
 
         string[][] data = new string[][]
         {
@@ -37,31 +38,77 @@ class Program
 
         foreach (var cellData in data)
         {
-            var tr = new LightElementNodeWithIterator("tr", DisplayType.Block, ClosingType.WithClosingTag);
+            var tr = new LightElementNodeVisitable("tr", DisplayType.Block, ClosingType.WithClosingTag);
             tr.AddCssClass("data-row");
+
+            if (cellData[0] == "1")
+            {
+                tr.AddCssClass("developer-row");
+            }
+            else if (cellData[0] == "2")
+            {
+                tr.AddCssClass("designer-row");
+            }
+            else if (cellData[0] == "3")
+            {
+                tr.AddCssClass("manager-row");
+            }
 
             for (int i = 0; i < cellData.Length - 1; i++)
             {
-                var td = new LightElementNodeWithIterator("td", DisplayType.Block, ClosingType.WithClosingTag);
+                var td = new LightElementNodeVisitable("td", DisplayType.Block, ClosingType.WithClosingTag);
                 td.AddCssClass("data-cell");
-                td.AddChild(new LightTextNode(cellData[i]));
+
+                if (i == 2)
+                {
+                    td.AddCssClass("position-cell");
+                    if (cellData[i] == "Developer")
+                    {
+                        td.AddCssClass("developer-position");
+                    }
+                    else if (cellData[i] == "Designer")
+                    {
+                        td.AddCssClass("designer-position");
+                    }
+                    else if (cellData[i] == "Manager")
+                    {
+                        td.AddCssClass("manager-position");
+                    }
+                }
+
+                td.AddChild(new LightTextNodeVisitable(cellData[i]));
                 tr.AddChild(td);
             }
 
-            var photoCell = new LightElementNodeWithIterator("td", DisplayType.Block, ClosingType.WithClosingTag);
+            var photoCell = new LightElementNodeVisitable("td", DisplayType.Block, ClosingType.WithClosingTag);
             photoCell.AddCssClass("photo-cell");
 
             string imagePath = cellData[4];
             var imageNode = new LightImageNode(imagePath, $"Photo of {cellData[1]}", 50, 50);
+            imageNode.AddCssClass("profile-photo");
             photoCell.AddChild(imageNode);
             tr.AddChild(photoCell);
 
-            var actionsCell = new LightElementNodeWithIterator("td", DisplayType.Block, ClosingType.WithClosingTag);
+            var actionsCell = new LightElementNodeVisitable("td", DisplayType.Block, ClosingType.WithClosingTag);
             actionsCell.AddCssClass("actions-cell");
 
-            var button = new LightElementNode("button", DisplayType.Inline, ClosingType.WithClosingTag);
+            var button = new LightElementNodeVisitable("button", DisplayType.Inline, ClosingType.WithClosingTag);
             button.AddCssClass("view-button");
-            button.AddChild(new LightTextNode("View Details"));
+
+            if (cellData[0] == "1")
+            {
+                button.AddCssClass("developer-button");
+            }
+            else if (cellData[0] == "2")
+            {
+                button.AddCssClass("designer-button");
+            }
+            else if (cellData[0] == "3")
+            {
+                button.AddCssClass("manager-button");
+            }
+
+            button.AddChild(new LightTextNodeVisitable("View Details"));
 
             button.AddEventListener(EventType.Click, (sender, e) => {
                 var targetButton = (LightElementNode)sender;
@@ -92,81 +139,24 @@ class Program
             buttons[i].TriggerEvent(EventType.Click);
         }
 
-        Console.WriteLine("\nIterating through the table structure with depth iterator:");
-        var depthIterator = table.CreateDepthFirstIterator();
-        int depthCount = 0;
+        Console.WriteLine("\n1. Applaying styles for developers:");
+        var developerStyleVisitor = new StyleApplyVisitor("developer-position", "color: blue; font-weight: bold;");
+        table.Accept(developerStyleVisitor);
 
-        while (depthIterator.HasNext())
-        {
-            var node = depthIterator.Next();
-            depthCount++;
+        Console.WriteLine("\n2. Applaying styles for designers:");
+        var designerStyleVisitor = new StyleApplyVisitor("designer-position", "color: purple; font-style: italic;");
+        table.Accept(designerStyleVisitor);
 
-            if (node is LightElementNode elementNode)
-            {
-                string classes = elementNode.HasCssClasses() ? elementNode.GetCssClassesString() : "no-class";
-                Console.WriteLine($"{depthCount}. Element: <{elementNode.TagName}> (Classes: {classes})");
-            }
-            else if (node is LightTextNode textNode)
-            {
-                string text = textNode.Text.Length > 30 ? textNode.Text.Substring(0, 27) + "..." : textNode.Text;
-                Console.WriteLine($"{depthCount}. Text: \"{text}\"");
-            }
-            else if (node is LightImageNode imageNode)
-            {
-                Console.WriteLine($"{depthCount}. Image: {imageNode.AltText}");
-            }
-        }
+        Console.WriteLine("\n3. Applaying styles for managers:");
+        var managerStyleVisitor = new StyleApplyVisitor("manager-position", "color: green; text-decoration: underline;");
+        table.Accept(managerStyleVisitor);
 
-        Console.WriteLine("\nIterating through the table structure with breadth iterator:");
-        var breadthIterator = table.CreateBreadthFirstIterator();
-        int breadthCount = 0;
+        Console.WriteLine("\n4. Applaying styles for buttons:");
+        var buttonStyleVisitor = new StyleApplyVisitor("view-button", "background-color: #007bff; color: white;");
+        table.Accept(buttonStyleVisitor);
 
-        while (breadthIterator.HasNext())
-        {
-            var node = breadthIterator.Next();
-            breadthCount++;
-
-            if (node is LightElementNode elementNode)
-            {
-                string classes = elementNode.HasCssClasses() ? elementNode.GetCssClassesString() : "no-class";
-                Console.WriteLine($"{breadthCount}. Element: <{elementNode.TagName}> (Classes: {classes})");
-            }
-            else if (node is LightTextNode textNode)
-            {
-                string text = textNode.Text.Length > 30 ? textNode.Text.Substring(0, 27) + "..." : textNode.Text;
-                Console.WriteLine($"{breadthCount}. Text: \"{text}\"");
-            }
-            else if (node is LightImageNode imageNode)
-            {
-                Console.WriteLine($"{breadthCount}. Image: {imageNode.AltText}");
-            }
-        }
-
-
-        Console.WriteLine("\nSearch using iterator");
-        int buttonCount = 0;
-        depthIterator.Reset();
-        
-        while (depthIterator.HasNext())
-        {
-            var node = depthIterator.Next();
-            
-            if (node is LightElementNode elementNode && elementNode.TagName == "button")
-            {
-                buttonCount++;
-                string buttonText = "Unknown";
-                
-                foreach (var child in elementNode._children)
-                {
-                    if (child is LightTextNode textNode)
-                    {
-                        buttonText = textNode.Text;
-                        break;
-                    }
-                }
-                
-                Console.WriteLine($"Button {buttonCount}: {buttonText}");
-            }
-        }
+        Console.WriteLine("\n5. Applaying styles for data in rows:");
+        var rowStyleVisitor = new StyleApplyVisitor("data-row", "border-bottom: 1px solid #ddd;");
+        table.Accept(rowStyleVisitor);
     }
 }
