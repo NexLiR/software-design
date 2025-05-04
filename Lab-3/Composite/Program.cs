@@ -1,31 +1,45 @@
 ﻿using Composite.CompositePattern;
 using Composite;
 using Composite.CompositePattern.Visitor;
+using Composite.CompositePattern.Command.Commands;
+using Composite.CompositePattern.Command;
 
 class Program
 {
     static void Main(string[] args)
     {
-        var table = new LightElementNodeVisitable("table", DisplayType.Block, ClosingType.WithClosingTag);
-        table.AddCssClass("data-table");
+        var commandManager = new CommandManager();
 
-        var thead = new LightElementNodeVisitable("thead", DisplayType.Block, ClosingType.WithClosingTag);
-        var headerRow = new LightElementNodeVisitable("tr", DisplayType.Block, ClosingType.WithClosingTag);
-        headerRow.AddCssClass("header-row");
+        var table = new LightElementNode("table", DisplayType.Block, ClosingType.WithClosingTag);
 
-        string[] headers = { "ID", "Name", "Position", "Salary", "Photo", "Actions" };
+        ICommand addCssClassCommand = new AddCssClassCommand(table, "data-table");
+        commandManager.ExecuteCommand(addCssClassCommand);
+
+        var thead = new LightElementNode("thead", DisplayType.Block, ClosingType.WithClosingTag);
+        var headerRow = new LightElementNode("tr", DisplayType.Block, ClosingType.WithClosingTag);
+
+        ICommand addTheadCommand = new AddChildCommand(table, thead);
+        commandManager.ExecuteCommand(addTheadCommand);
+
+        ICommand addHeaderRowCommand = new AddChildCommand(thead, headerRow);
+        commandManager.ExecuteCommand(addHeaderRowCommand);
+
+        string[] headers = { "ID", "Name", "Position", "Salary", "Photo" };
         foreach (var headerText in headers)
         {
-            var th = new LightElementNodeVisitable("th", DisplayType.Block, ClosingType.WithClosingTag);
-            th.AddCssClass("header-cell");
-            th.AddChild(new LightTextNodeVisitable(headerText));
-            headerRow.AddChild(th);
+            var th = new LightElementNode("th", DisplayType.Block, ClosingType.WithClosingTag);
+
+            ICommand addTextCommand = new AddChildCommand(th, new LightTextNode(headerText));
+            commandManager.ExecuteCommand(addTextCommand);
+
+            ICommand addThCommand = new AddChildCommand(headerRow, th);
+            commandManager.ExecuteCommand(addThCommand);
         }
 
-        thead.AddChild(headerRow);
-        table.AddChild(thead);
+        var tbody = new LightElementNode("tbody", DisplayType.Block, ClosingType.WithClosingTag);
 
-        var tbody = new LightElementNodeVisitable("tbody", DisplayType.Block, ClosingType.WithClosingTag);
+        ICommand addTbodyCommand = new AddChildCommand(table, tbody);
+        commandManager.ExecuteCommand(addTbodyCommand);
 
         string[][] data = new string[][]
         {
@@ -38,125 +52,115 @@ class Program
 
         foreach (var cellData in data)
         {
-            var tr = new LightElementNodeVisitable("tr", DisplayType.Block, ClosingType.WithClosingTag);
-            tr.AddCssClass("data-row");
+            var tr = new LightElementNode("tr", DisplayType.Block, ClosingType.WithClosingTag);
 
-            if (cellData[0] == "1")
-            {
-                tr.AddCssClass("developer-row");
-            }
-            else if (cellData[0] == "2")
-            {
-                tr.AddCssClass("designer-row");
-            }
-            else if (cellData[0] == "3")
-            {
-                tr.AddCssClass("manager-row");
-            }
+            ICommand addRowClassCommand = new AddCssClassCommand(tr, "data-row");
+            commandManager.ExecuteCommand(addRowClassCommand);
 
             for (int i = 0; i < cellData.Length - 1; i++)
             {
-                var td = new LightElementNodeVisitable("td", DisplayType.Block, ClosingType.WithClosingTag);
-                td.AddCssClass("data-cell");
+                var td = new LightElementNode("td", DisplayType.Block, ClosingType.WithClosingTag);
 
-                if (i == 2)
-                {
-                    td.AddCssClass("position-cell");
-                    if (cellData[i] == "Developer")
-                    {
-                        td.AddCssClass("developer-position");
-                    }
-                    else if (cellData[i] == "Designer")
-                    {
-                        td.AddCssClass("designer-position");
-                    }
-                    else if (cellData[i] == "Manager")
-                    {
-                        td.AddCssClass("manager-position");
-                    }
-                }
+                ICommand addCellClassCommand = new AddCssClassCommand(td, "data-cell");
+                commandManager.ExecuteCommand(addCellClassCommand);
 
-                td.AddChild(new LightTextNodeVisitable(cellData[i]));
-                tr.AddChild(td);
+                ICommand addCellTextCommand = new AddChildCommand(td, new LightTextNode(cellData[i]));
+                commandManager.ExecuteCommand(addCellTextCommand);
+
+                ICommand addTdCommand = new AddChildCommand(tr, td);
+                commandManager.ExecuteCommand(addTdCommand);
             }
 
-            var photoCell = new LightElementNodeVisitable("td", DisplayType.Block, ClosingType.WithClosingTag);
-            photoCell.AddCssClass("photo-cell");
+            var photoCell = new LightElementNode("td", DisplayType.Block, ClosingType.WithClosingTag);
+
+            ICommand addPhotoCellClassCommand = new AddCssClassCommand(photoCell, "photo-cell");
+            commandManager.ExecuteCommand(addPhotoCellClassCommand);
 
             string imagePath = cellData[4];
             var imageNode = new LightImageNode(imagePath, $"Photo of {cellData[1]}", 50, 50);
-            imageNode.AddCssClass("profile-photo");
-            photoCell.AddChild(imageNode);
-            tr.AddChild(photoCell);
 
-            var actionsCell = new LightElementNodeVisitable("td", DisplayType.Block, ClosingType.WithClosingTag);
-            actionsCell.AddCssClass("actions-cell");
+            ICommand addImageClassCommand = new AddCssClassCommand(imageNode, "profile-photo");
+            commandManager.ExecuteCommand(addImageClassCommand);
 
-            var button = new LightElementNodeVisitable("button", DisplayType.Inline, ClosingType.WithClosingTag);
-            button.AddCssClass("view-button");
+            ICommand addImageCommand = new AddChildCommand(photoCell, imageNode);
+            commandManager.ExecuteCommand(addImageCommand);
 
-            if (cellData[0] == "1")
-            {
-                button.AddCssClass("developer-button");
-            }
-            else if (cellData[0] == "2")
-            {
-                button.AddCssClass("designer-button");
-            }
-            else if (cellData[0] == "3")
-            {
-                button.AddCssClass("manager-button");
-            }
+            ICommand addPhotoCellCommand = new AddChildCommand(tr, photoCell);
+            commandManager.ExecuteCommand(addPhotoCellCommand);
 
-            button.AddChild(new LightTextNodeVisitable("View Details"));
+            var button = new LightElementNode("button", DisplayType.Inline, ClosingType.WithClosingTag);
 
-            button.AddEventListener(EventType.Click, (sender, e) => {
+            ICommand addButtonClassCommand = new AddCssClassCommand(button, "link-button");
+            commandManager.ExecuteCommand(addButtonClassCommand);
+
+            ICommand addButtonTextCommand = new AddChildCommand(button, new LightTextNode("View Details"));
+            commandManager.ExecuteCommand(addButtonTextCommand);
+
+            LightEventHandler clickHandler = (sender, e) => {
                 var targetButton = (LightElementNode)sender;
                 var parentRow = tr;
 
-                string employeeName = cellData[1];
+                string employeeName = "Unknown";
+                int cellIndex = 0;
+                foreach (var child in parentRow._children)
+                {
+                    if (child is LightElementNode cellNode && cellNode.TagName == "td")
+                    {
+                        cellIndex++;
+                        if (cellIndex == 2)
+                        {
+                            foreach (var cellChild in cellNode._children)
+                            {
+                                if (cellChild is LightTextNode textNode)
+                                {
+                                    employeeName = textNode.Text;
+                                    break;
+                                }
+                            }
+                            break;
+                        }
+                    }
+                }
+
                 Console.WriteLine($"\n[NAVIGATION EVENT] Redirecting to details page for: {employeeName}");
                 Console.WriteLine($"Full info about {employeeName}");
-            });
+            };
+
+            ICommand addEventCommand = new AddEventListenerCommand(button, EventType.Click, clickHandler);
+            commandManager.ExecuteCommand(addEventCommand);
 
             buttons.Add(button);
-            actionsCell.AddChild(button);
-            tr.AddChild(actionsCell);
 
-            tbody.AddChild(tr);
+            ICommand addButtonCommand = new AddChildCommand(tr, button);
+            commandManager.ExecuteCommand(addButtonCommand);
+
+            ICommand addTrCommand = new AddChildCommand(tbody, tr);
+            commandManager.ExecuteCommand(addTrCommand);
         }
-        table.AddChild(tbody);
 
-        Console.WriteLine("Structure:");
+        Console.WriteLine("Command history:");
+        foreach (var commandDescription in commandManager.GetCommandHistory())
+        {
+            Console.WriteLine($"- {commandDescription}");
+        }
+
+        Console.WriteLine("\nStructure:");
         table.PrintStructure();
 
         Console.WriteLine("\nHTML Output:");
         Console.WriteLine(table.GetOuterHTML());
 
-        Console.WriteLine("\nSimulating button clicks:");
-        for (int i = 0; i < buttons.Count; i++)
+        Console.WriteLine("\nUndo 10 commands:");
+        for (int i = 0; i < 10; i++)
         {
-            buttons[i].TriggerEvent(EventType.Click);
+            if (commandManager.CanUndo())
+            {
+                commandManager.Undo();
+                Console.WriteLine($"Undo #{i + 1}");
+            }
         }
 
-        Console.WriteLine("\n1. Applaying styles for developers:");
-        var developerStyleVisitor = new StyleApplyVisitor("developer-position", "color: blue; font-weight: bold;");
-        table.Accept(developerStyleVisitor);
-
-        Console.WriteLine("\n2. Applaying styles for designers:");
-        var designerStyleVisitor = new StyleApplyVisitor("designer-position", "color: purple; font-style: italic;");
-        table.Accept(designerStyleVisitor);
-
-        Console.WriteLine("\n3. Applaying styles for managers:");
-        var managerStyleVisitor = new StyleApplyVisitor("manager-position", "color: green; text-decoration: underline;");
-        table.Accept(managerStyleVisitor);
-
-        Console.WriteLine("\n4. Applaying styles for buttons:");
-        var buttonStyleVisitor = new StyleApplyVisitor("view-button", "background-color: #007bff; color: white;");
-        table.Accept(buttonStyleVisitor);
-
-        Console.WriteLine("\n5. Applaying styles for data in rows:");
-        var rowStyleVisitor = new StyleApplyVisitor("data-row", "border-bottom: 1px solid #ddd;");
-        table.Accept(rowStyleVisitor);
+        Console.WriteLine("\nHTML after Undo:");
+        Console.WriteLine(table.GetOuterHTML());
     }
 }
